@@ -20,30 +20,30 @@ After compilation, use
 ```sh
 ./matmul -h
 ```
-to see the available options. Here is the result on my machines:
+to see the available options. Here is the result on my server:
 
 |Implementation |-a |Linux,-n2000|Linux,-n4000|
 |:--------------|:-:|-----------:|-----------:|
-|Naive          | 0 |7.53 sec    | 188.85 sec |
-|Transposed     | 1 |6.66 sec    |  55.48 sec |
-|sdot w/o hints | 4 |6.66 sec    |  55.04 sec |
-|sdot with hints| 3 |2.41 sec    |  29.47 sec |
-|SSE sdot       | 2 |1.36 sec    |  21.79 sec |
-|SSE+tiling sdot| 7 |1.11 sec    |  10.84 sec |
-|OpenBLAS sdot  | 5 |2.69 sec    |  28.87 sec |
-|OpenBLAS sgemm | 6 |0.63 sec    |   4.91 sec |
-|[uBLAS][ublas] |   |7.43 sec    | 165.74 sec |
-|[Eigen][eigen] |   |0.61 sec    |   4.76 sec |
+|[Eigen][eigen] |   |0.13 sec    |   0.99 sec |
+|OpenBLAS sgemm | 6 |0.14 sec    |   1.07 sec |
+|SSE+tiling sdot| 7 |1.10 sec    |   7.42 sec |
+|OpenBLAS sdot  | 5 |1.41 sec    |  11.86 sec |
+|sdot with hints| 3 |1.53 sec    |  12.13 sec |
+|SSE sdot       | 2 |1.62 sec    |  12.52 sec |
+|Transposed     | 1 |7.27 sec    |  57.43 sec |
+|sdot w/o hints | 4 |7.31 sec    |  57.16 sec |
+|[uBLAS][ublas] |   |12.52 sec   | 197.81 sec |
+|Naive          | 0 |15.04 sec   | 226.36 sec |
 
 The machine configurations are as follows:
 
 |Machine|CPU                        |OS         |Compiler  |
 |:------|:--------------------------|:----------|:---------|
-|Linux  |[2.6 GHz Xeon E5-2697][linuxcpu]       |CentOS 6   |gcc-4.4.7/icc-15.0.3 |
+|Linux  |[3.10 GHz Xeon E-2324G][linuxcpu]       |Ubuntu 22.04   |gcc-11.2.0 |
 
-[oblas]: http://www.openblas.net/
-[sdot]: http://www.netlib.org/lapack/lug/node145.html
-[linuxcpu]: http://ark.intel.com/products/81059
-[looptile]: https://en.wikipedia.org/wiki/Loop_tiling
+[oblas]: https://www.openblas.net/
+[sdot]: https://www.netlib.org/lapack/lug/node145.html
+[linuxcpu]: https://ark.intel.com/content/www/us/en/ark/products/212255/intel-xeon-e2324g-processor-8m-cache-3-10-ghz.html
+[looptile]: https://en.wikipedia.org/wiki/Loop_nest_optimization
 [ublas]: https://www.boost.org/doc/libs/1_79_0/libs/numeric/ublas/doc/index.html
-[eigen]: http://eigen.tuxfamily.org/index.php?title=Main_Page
+[eigen]: https://eigen.tuxfamily.org/index.php?title=Main_Page

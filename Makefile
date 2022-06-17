@@ -26,7 +26,7 @@ $(openblas_lib): $(openblas)
 	make -j && \
 	make PREFIX=. install
 
-target/matmul:matmul.cpp | $(openblas)
+target/matmul:matmul.cpp | $(openblas_lib)
 	$(CXX) $(CXXFLAGS) -o $@ $^ -DHAVE_CBLAS $(openblas_lib) \
 		-I$(openblas)/include
 
